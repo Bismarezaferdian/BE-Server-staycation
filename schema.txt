@@ -1,0 +1,67 @@
+category : {
+    type : string
+}
+
+image :{
+    iamgeUrl : string
+}
+
+item : {
+    title : string,
+    price : number,
+    country :string,
+    city : string,
+    ispopular : boolean,
+    description : string,
+    imageId : [{_id:ObjectId}],
+    featureId : [{_id: ObjectId}],
+    activityId: [{_id: ObjectId}],
+}
+
+feature :{
+    name :string,
+    qty : number,
+    imageUrl : string,
+}
+
+activity :{
+    name :string,
+    type :string,
+    imageUrl: string,
+    isPopular: boolean 
+}
+
+
+//collection bookingpage 
+
+booking:{
+    bookingStarDate : date ,
+    bookingEndDate : date ,
+    itemID: [{
+        _id:ObjectId
+        price:number,
+        night : number
+        }]
+    memberID : [{_id:ObjectId}],
+    bankId: [{_id:ObjectId}]
+    proofPayment :string,
+    bankFrom:string,
+    accountHolder : string
+    status:string
+}
+
+member :{
+    firstName : string,
+    lastName :string,
+    email:string,
+    phoneNumber: string,
+}
+
+
+//collection payment page 
+
+bank :{
+    nameBank :string,
+    nomerRekening:string,
+    name :string
+}

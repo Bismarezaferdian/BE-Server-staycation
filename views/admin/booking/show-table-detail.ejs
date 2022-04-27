@@ -1,0 +1,66 @@
+<div class="card shadow mb-4 mt-2">
+  <!-- <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+  </div> -->
+  <div class="card-body">
+    <div class="row">
+      <a type="button" class="btn btn-primary btn-sm" href="/admin/booking">
+        Back
+      </a>
+      <form
+        action="/admin/booking/<%= booking.id %>/confirm?_method=PUT"
+        method="POST"
+      >
+        <button type="submit" class="btn btn-success btn-sm ml-2">
+          confirm
+        </button>
+      </form>
+      <form
+        action="/admin/booking/<%= booking.id %>/reject?_method=PUT"
+        method="POST"
+      >
+        <button type="submit" class="btn btn-danger btn-sm ml-2">reject</button>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <!-- ini image -->
+        <img
+          src="http://localhost:3000/<%= booking.payments.proofPayment %>"
+          alt="imageUrl"
+          width="100%"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTableActivity"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>Name Member</th>
+                <th>Total</th>
+                <th>Bank From</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= booking.memberId.firstName%><%=
+                  booking.memberId.lastName%>
+                </td>
+                <td><%= booking.total%></td>
+                <td><%= booking.payments.bankFrom%></td>
+                <td><%= booking.itemId.title %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
