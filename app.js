@@ -13,12 +13,15 @@ const flash = require("connect-flash");
 // moongoose.connect("mongodb://localhost:27017/db-bwamern");
 const mongoose = require("mongoose");
 // mongoose.connect("mongodb://localhost:27017/db-bwamern", {
-mongoose.connect("mongodb://127.0.0.1:27017/db_staycation", {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://websitemuid:admin@cluster0.3iiwa.mongodb.net/db_staycation?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
+    useUnifiedTopology: true,
+  }
+);
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
