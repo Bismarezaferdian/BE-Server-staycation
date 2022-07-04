@@ -134,11 +134,14 @@ module.exports = {
       phoneNumber,
       accountHolder,
       bankFrom,
-      // proofPayment,
     } = req.body;
+
     if (!req.file) {
-      return res.status(404).json({ message: "Image Not Found !" });
+      return res.status(404).json({ message: "Image not found" });
     }
+
+    console.log(idItem)
+
     if (
       idItem === undefined ||
       duration === undefined ||
@@ -150,22 +153,22 @@ module.exports = {
       email === undefined ||
       phoneNumber === undefined ||
       accountHolder === undefined ||
-      bankFrom === undefined
-      // proofPayment === undefined"
-    ) {
-      res.status(404).json({ message: "Data Harus lengkap" });
+      bankFrom === undefined) {
+      res.status(404).json({ message: "Lengkapi semua field" });
     }
-    // console.log(idItem);
 
     const item = await Item.findOne({ _id: idItem });
+
     if (!item) {
-      res.status(404).json({ message: "Item Not Found !" });
+      return res.status(404).json({ message: "Item not found" });
     }
+
     item.sumBooking += 1;
+
     await item.save();
 
     let total = item.price * duration;
-    let tax = total * 0.1;
+    let tax = total * 0.10;
 
     const invoice = Math.floor(1000000 + Math.random() * 9000000);
 
@@ -173,30 +176,31 @@ module.exports = {
       firstName,
       lastName,
       email,
-      phoneNumber,
+      phoneNumber
     });
 
     const newBooking = {
       invoice,
       bookingStartDate,
       bookingEndDate,
-      total: (total += tax),
+      total: total += tax,
       itemId: {
         _id: item.id,
         title: item.title,
         price: item.price,
-        duration: duration,
+        duration: duration
       },
+
       memberId: member.id,
       payments: {
-        proofPayment: `images/$(req.file.filename)`,
+        proofPayment: `images/${req.file.filename}`,
         bankFrom: bankFrom,
-        accountHolder: accountHolder,
-      },
-    };
+        accountHolder: accountHolder
+      }
+    }
 
     const booking = await Booking.create(newBooking);
 
-    res.status(201).json({ booking });
-  },
+    res.status(201).json({ message: "Success Booking", booking });
+  }
 };
