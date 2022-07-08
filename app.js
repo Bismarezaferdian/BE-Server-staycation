@@ -38,6 +38,13 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
+app.use((req,res,next)=>{
+  res.setHeader('access-Control-Allow-Origin', "*")
+  res.setHeader('access-Control-Allow-Method', "GET, POST, PUT, DELETE,PATCH,OPTION")
+  res.setHeader('access-Control-Allow-Header', "Content-type, Authorization")
+  next()
+  })
+
 app.use(
   session({
     secret: "keyboard cat",
@@ -80,5 +87,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+
 
 module.exports = app;
