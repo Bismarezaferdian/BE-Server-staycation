@@ -39,9 +39,9 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
 app.use((req,res,next)=>{
-  res.setHeader('access-Control-Allow-Origin', "*")
-  res.setHeader('access-Control-Allow-Method', "GET, POST, PUT, DELETE,PATCH,OPTION")
-  res.setHeader('access-Control-Allow-Header', "Content-type, Authorization")
+  res.setHeader('Access-Control-Allow-Origin', "*")
+  res.setHeader('Access-Control-Allow-Methods', "GET, POST, PUT, DELETE, PATCH,OPTIONS")
+  res.setHeader('Access-Control-Allow-Headers', "Content-Type, Authorization")
   next()
   })
 
