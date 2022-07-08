@@ -203,4 +203,4 @@ module.exports = {
 
     res.status(201).json({ message: "Success Booking", booking });
   }
-};
+}
