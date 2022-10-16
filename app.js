@@ -1,6 +1,6 @@
 var createError = require("http-errors");
 var express = require("express");
-var cors = require('cors')
+var cors = require("cors");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -38,12 +38,15 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
-app.use((req,res,next)=>{
-  res.setHeader('Access-Control-Allow-Origin', "*")
-  res.setHeader('Access-Control-Allow-Methods', "GET, POST, PUT, DELETE, PATCH,OPTIONS")
-  res.setHeader('Access-Control-Allow-Headers', "Content-Type, Authorization")
-  next()
-  })
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH,OPTIONS"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.use(
   session({
@@ -63,7 +66,7 @@ app.use(
   "/sb-admin-2",
   express.static(path.join(__dirname, "node_modules/startbootstrap-sb-admin-2"))
 );
-app.use(cors())
+app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
@@ -87,7 +90,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-
 
 module.exports = app;
