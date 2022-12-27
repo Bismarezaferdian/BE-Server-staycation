@@ -1,6 +1,7 @@
 {
   "name": "server-staycation",
   "version": "0.0.0",
+  "main": "app.js",
   "private": true,
   "scripts": {
     "seed": "node seed.js",
