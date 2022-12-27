@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "seed": "node seed.js",
-    "start": "nodemon ./bin/www",
+    "dev": "nodemon ./bin/www",
     "test": "mocha --exit"
   },
   "dependencies": {
