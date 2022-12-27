@@ -1,11 +1,10 @@
 {
   "name": "server-staycation",
   "version": "0.0.0",
-  "main": "app.js",
   "private": true,
   "scripts": {
     "seed": "node seed.js",
-    "dev": "nodemon ./bin/www",
+    "main": "nodemon ./bin/www",
     "test": "mocha --exit"
   },
   "dependencies": {
