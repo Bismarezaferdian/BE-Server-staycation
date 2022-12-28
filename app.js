@@ -53,7 +53,8 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 6000000 },
+    maxAge: Date.now() + 30 * 86400 * 1000,
+    // cookie: { maxAge: 6000000 },
   })
 );
 app.use(flash());
